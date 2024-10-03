@@ -32,8 +32,8 @@ pipeline {
                     // Apply the Terraform configuration to create the EC2 instance
                     sh '''
                     terraform apply -auto-approve \
-                    -var "aws_access_key=${AKIA3ISBVXA6KCV7BFWD}" \
-                    -var "aws_secret_key=${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}"
+                    -var "aws_access_key=${AWS_ACCESS_KEY_ID}" \
+                    -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
                     '''
                 }
             }
