@@ -1,55 +1,23 @@
-pipeline {
-    agent any
+provider "aws" {
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region     = "us-west-2"  # Specify your AWS region
+}
 
-    environment {
-        // Fetch AWS credentials from Jenkins credentials store
-        AWS_ACCESS_KEY_ID = "AKIA3ISBVXA6KCV7BFWD"
-        AWS_SECRET_ACCESS_KEY = "1S1sZSiMsPWQxo4TFJ2KJh3FTSopbCThSCh+RWqY"
-    }
+resource "aws_instance" "my_instance" {
+  ami           = "ami-0d1622042e957c247"  # Replace with your desired AMI
+  instance_type = "t2.micro"               # Instance type
+  tags = {
+    Name = "MyNewEC2Instance"
+  }
+}
 
-    stages {
-        stage('Checkout Terraform Code') {
-            steps {
-                // Clone your Git repository containing the Terraform code
-                git branch: 'main', url: https://github.com/KowshikNaga/kowshik.git
-            }
-        }
+# Define variables for the AWS credentials
+variable "aws_access_key" {
+  description = "AKIA3ISBVXA6KCV7BFWD"
 
-        stage('Initialize Terraform') {
-            steps {
-                script {
-                    // Initialize Terraform
-                    sh '''
-                    terraform init
-                    '''
-                }
-            }
-        }
+}
 
-        stage('Apply Terraform to Create EC2') {
-            steps {
-                script {
-                    // Apply the Terraform configuration to create the EC2 instance
-                    sh '''
-                    terraform apply -auto-approve \
-                    -var "aws_access_key=${AWS_ACCESS_KEY_ID}" \
-                    -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
-                    '''
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Clean up workspace
-            cleanWs()
-        }
-        success {
-            echo 'Terraform has successfully created an EC2 instance!'
-        }
-        failure {
-            echo 'Failed to create EC2 instance.'
-        }
-    }
+variable "aws_secret_key" {
+  description = "1S1sZSiMsPWQxo4TFJ2KJh3FTSopbCThSCh+RWqY"
 }
