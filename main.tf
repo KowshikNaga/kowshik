@@ -11,7 +11,7 @@ variable "aws_secret_key" {
 
 # Use the variables in the provider block
 provider "aws" {
-  region     = "us-east-1"
+  region     = "ap-south-1"
   access_key = var.aws_access_key
   secret_key = var.aws_secret_key
 }
