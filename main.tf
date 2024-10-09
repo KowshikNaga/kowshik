@@ -33,5 +33,5 @@ resource "aws_instance" "ec2_instance" {
     Name = "Project"
   }
 
-  count = 20
+  count = 2
 }
