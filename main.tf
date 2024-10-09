@@ -1,20 +1,13 @@
 provider "aws" {
-  region = "ap-south-1"  # Change to your preferred region
+  region = "ap-south-1"  # Replace with your preferred region
 }
 
 resource "aws_instance" "ec2_instance" {
-  ami                    = "ami-0d1622042e957c247"  # AMI ID
+  ami                    = "ami-0d1622042e957c247"  # Replace with your desired AMI ID
   instance_type          = "t2.micro"               # Instance type
-  key_name               = "main"                   # SSH key
+  key_name               = "main"                   # SSH key name
   subnet_id              = "subnet-03c5a2fff3bbfa559" # Subnet ID
-
-  # Network Interface with public IP and security group
-  network_interface {
-    device_index          = 0
-    subnet_id             = "subnet-03c5a2fff3bbfa559"  # Subnet ID
-    associate_public_ip_address = true
-    security_groups       = ["sg-001966d6a9e97b1c0"]  # Security Group ID
-  }
+  vpc_security_group_ids = ["sg-001966d6a9e97b1c0"]  # Security Group ID
 
   # Credit specification for T2 instance types (standard mode)
   credit_specification {
@@ -40,6 +33,5 @@ resource "aws_instance" "ec2_instance" {
     Name = "Project"
   }
 
-  # Count for EC2 instances (MinCount and MaxCount equivalent)
   count = 6
 }
