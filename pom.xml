@@ -8,7 +8,7 @@
 	<name>Java Home myweb</name>
 	<url>http://maven.apache.org</url>
 	
-	<properties>
+	<properties>https://github.com/KowshikNaga/kowshik/edit/main/pom.xml
 		<docker.image.prefix>kammana</docker.image.prefix>
 		<sonar.host.url>http://65.0.129.179:9000/</sonar.host.url>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.9.8</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 
