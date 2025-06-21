@@ -24,7 +24,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install boto3'
+                sh 'python3 -m pip install boto3'
             }
         }
 
