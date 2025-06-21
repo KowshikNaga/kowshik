@@ -11,7 +11,7 @@ pipeline {
         string(name: 'ASG_NAME', defaultValue: 'Demos212', description: 'Auto Scaling Group Name')
         choice(name: 'AZ_NAME', choices: ['ap-south-2a', 'ap-south-2b', 'ap-south-2c'], description: 'Availability Zone')
         choice(name: 'ACTION', choices: ['remove', 'add'], description: 'Action to perform')
-        choice(name: 'GIT_BRANCH', choices: ['main', 'dev', 'master'], description: 'Git branch to use')
+        choice(name: 'GIT_BRANCH', choices: ['main', 'Dev', 'master'], description: 'Git branch to use')
     }
 
     stages {
