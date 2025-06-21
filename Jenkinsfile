@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')       // Jenkins credential ID
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')   // Jenkins credential ID
+        AWS_ACCESS_KEY_ID     = credentials('AKIA3ISBVXA6P464CZO4')       // Jenkins credential ID
+        AWS_SECRET_ACCESS_KEY = credentials('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')   // Jenkins credential ID
         AWS_DEFAULT_REGION    = 'ap-south-2'
     }
 
@@ -18,7 +18,7 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 // Replace the Git URL with your actual repo
-                git branch: "${params.GIT_BRANCH}", url: 'https://github.com/your-user/your-repo.git'
+                git branch: "${params.GIT_BRANCH}", url: 'https://github.com/KowshikNaga/kowshik.git'
             }
         }
 
